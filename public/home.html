@@ -1,0 +1,97 @@
+  <head>
+    <title>USA Brewery - Home</title>
+    <script type='text/javascript' src="home.js" defer></script>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #ffffff;
+      }
+      header,
+      footer {
+        background: #007acc;
+        color: #fff;
+        text-align: center;
+        padding: 1em;
+      }
+      nav ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background: #005a9e;
+      }
+      nav li {
+        flex: 1;
+      }
+      nav a {
+        display: block;
+        padding: 0.75em;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+      }
+      nav a:hover {
+        background: #004080;
+      }
+      .content {
+        max-width: 800px;
+        margin: 2em auto;
+        padding: 1em;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .brewery-info {
+        margin-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <header><h1>USA Brewery</h1></header>
+    <form onsubmit="createBrewery(); return false">
+      <label for="name">Name:</label>
+      <input type="text" id="name">
+      <br>
+      <label for="city">City:</label>
+      <input type="text" id="city">
+      <br>
+      <label for="state">State:</label>
+      <input type="text" id="state" maxlength="2">
+      <br>
+      <br>
+      <input type="submit" name="Add Brewery">
+    </form>
+  </body>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="breweries.html">Breweries</a></li>
+      </ul>
+    </nav>
+    <section class="content">
+      <h2>Featured Brewery</h2>
+      <div id="featured">Loading...</div>
+    </section>
+    <footer>&copy; 2025 Public API Brewery Explorer</footer>
+
+    <script>
+
+      async function loadFeatured() {
+        const container = document.getElementById("featured");
+        try {
+          const res = await fetch(
+            "https://api.openbrewerydb.org/breweries/random"
+          );
+          const data = await res.json();
+          const b = data[0];
+          container.innerHTML = `<p><strong>${b.name}</strong> (${b.brewery_type})<br>${b.city}, ${b.state}</p>`;
+        } catch (e) {
+          container.textContent = "Error loading brewery.";
+        }
+      }
+      window.onload = loadFeatured;
+    </script>
+  </body>
+</html>
