@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
+    "body-parser": "^2.2.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "usa-state-validator": "^1.0.6"
+  },
+  "name": "inst377-brewery",
+  "version": "1.0.0",
+  "description": "### Title: Public API Explorer: Brewery Search Tool",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -e '*'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bnguye13/inst377-brewery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bnguye13/inst377-brewery/issues"
+  },
+  "homepage": "https://github.com/bnguye13/inst377-brewery#readme"
+}
