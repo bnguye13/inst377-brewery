@@ -29,51 +29,50 @@ This manual provides guidance on how to set up the project locally, understand i
 ## Installation
 
 1. **Clone the repository**
+   # git clone https://github.com/your-username/public-api-explorer.git
+   # cd public-api-explorer
 
-   ```bash
-   git clone https://github.com/your-username/public-api-explorer.git
-   cd public-api-explorer
+2. **Install dependencies (for Node-based server)**
 
-   ```
+    # npm install
 
-2. **Install dependencies (if you choose to serve via Node)**
+3. **Run a local server (choose one method):**
 
-   ```bash
-   npm install
+## Python
+# python -m http.server 8000
 
-   ```
+## Node (static site)
+# npx serve public
 
-3. **Run a local server (pick one):**
+## Node (custom backend)
+# node index.js
 
-Python:
-```bash
-python -m http.server 8000
-
-    ```
-
-Node:
-```bash
-npx serve .
-
-    ```
-
-# Then open your browser to http://localhost:8000/home.html
+# Then open your browser to:
+# http://localhost:8000/home.html or
+# http://localhost:3000/ (for Express server)
 
 **API Endpoints**
 
-# All data is fetched directly from the Open Brewery DB public API—no custom backend.
+## Public API (Open Brewery DB)
+# GET /breweries/random – Returns a single random brewery (Home page)
 
-# GET /breweries/random
+# GET /breweries?per_page=5 – Returns a sample of 5 breweries (About page)
 
-# Returns a single random brewery (used on the Home page).
+# GET /breweries/search?query={term} – Returns search results (Breweries page)
 
-# GET /breweries?per_page=5
+## Custom API (Supabase)
+# GET /api/favorites – Returns a list of saved favorite breweries from Supabase
 
-# Returns the first 5 breweries (used on the About page).
+# POST /api/favorites – Saves a favorite brewery to the Supabase database
 
-# GET /breweries/search?query={term}
+# Expects JSON body:
 
-# Returns an array of breweries matching the search term (used on the Breweries page).
+{
+  "id": "brewery_id",
+  "name": "Brewery Name",
+  "city": "City",
+  "state": "State"
+}
 
 **Known Bugs**
 
